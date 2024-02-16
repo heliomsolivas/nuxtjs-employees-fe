@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  nuxtjs-employees-fe:
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "3000:3000"
