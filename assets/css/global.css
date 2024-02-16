@@ -1,0 +1,35 @@
+@import url("~/assets/css/reset.css");
+@import url("~/assets/css/variables.css");
+@import url("~/assets/css/base.css");
+@import url("~/assets/css/transitions.css");
+@import url("~/assets/css/helpers.css");
+
+.input__search {
+  height: 40px;
+  padding: 0 8px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+  color: #33475b;
+  width: 100%;
+  border: 1px solid #cbd6e2;
+  border-radius: 3px;
+  padding: 0 16px;
+  padding-left: 38px;
+  background-repeat: no-repeat;
+  background-position: 8px 8px;
+  transition: all 0.2 ease-in-out;
+}
+
+input[type="search"]:focus {
+  border: 1px solid var(--primary-color);
+}
+
+.link {
+  color: #595589;
+  transition: all 0.3s ease-in-out;
+}
+.link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+body {
+  margin: 16px;
+}
+button {
+  cursor: pointer;
+}
+h1 {
+  font-size: 24px;
+}
+@media (min-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+}
+label {
+  margin-bottom: 8px;
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+ul li {
+  list-style-position: inside;
+  margin: 8px 0;
+}
+img {
+  max-width: 100%;
+}

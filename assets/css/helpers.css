@@ -1,0 +1,43 @@
+/** Global Helpers based on Tailwind CSS */
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.gap-1 {
+  gap: 8px;
+}
+.gap-2 {
+  gap: 16px;
+}
+.mb-2 {
+  margin-bottom: 16px;
+}
+.space-between {
+  justify-content: space-between;
+}
+.pointer {
+  cursor: pointer;
+}
+.w-100 {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
