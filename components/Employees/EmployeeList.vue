@@ -13,14 +13,10 @@
 <script setup lang="ts">
 import type { EmployeeObject } from "~/types/employee";
 import EmployeeBox from "../components/Employees/EmployeeBox.vue";
-import type { PropType } from "vue";
 
-const props = defineProps({
-  employees: {
-    required: true,
-    type: Array as PropType<EmployeeObject[]>,
-  },
-});
+defineProps<{
+  employees: EmployeeObject[];
+}>();
 </script>
 
 <style scoped>

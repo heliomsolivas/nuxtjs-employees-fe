@@ -9,42 +9,38 @@
     <label for="userInput">Filtre pelo cargo</label>
     <div class="flex gap-1 flex-wrap">
       <div class="role__item flex items-center pointer" v-for="(role, $r) in roleTags" :key="$r">
-        <a href.prevent="#" @click="clickRole(String(role.roleName))">{{ role.roleName }}</a>
-        <span class="flex items-center pointer" v-if="roleSelected === role.roleName" @click="clickClearRole"><img src="/icons/close.svg" alt="Remover" /></span>
+        <a href.prevent="#" @click="handleClickRole(String(role.roleName))">{{ role.roleName }}</a>
+        <span class="flex items-center pointer" v-if="roleSelected === role.roleName" @click="handleClearRole"><img src="/icons/close.svg" alt="Remover" /></span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
 import { defineEmits } from "vue";
-const emit = defineEmits(["setRole", "clearRole"]);
 
-function clickRole(roleName: string) {
-  emit("setRole", roleName);
-}
+//events
+const emit = defineEmits<{
+  (e: "@filterByRole", roleName: string): void;
+  (e: "@clearRole"): void;
+}>();
 
-function clickClearRole() {
-  emit("clearRole");
-}
+const handleClickRole = (roleName: string) => {
+  emit("@filterByRole", roleName);
+};
 
+const handleClearRole = () => {
+  emit("@clearRole");
+};
+
+//data
 const searchString = defineModel<string>();
 
-const props = defineProps({
-  roleTags: {
-    required: true,
-    type: Array as PropType<{ id: string | number; roleName: string | number; selected: boolean }[]>,
-  },
-  roleSelected: {
-    required: false,
-    type: String,
-  },
-  searchString: {
-    required: false,
-    type: String,
-  },
-});
+//props
+defineProps<{
+  roleTags: { id: string | number; roleName: string | number; selected: boolean }[];
+  roleSelected?: string;
+}>();
 </script>
 <style scoped>
 .role__item {

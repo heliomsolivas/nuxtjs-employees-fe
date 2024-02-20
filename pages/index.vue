@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Lista de funcionários</h1>
-    <EmployeeFilters :roleTags="roleTags" :roleSelected="roleSelected" v-model="searchString" @setRole="setRole" @clearRole="clearRole" />
+    <EmployeeFilters :roleTags="roleTags" :roleSelected="roleSelected" v-model="searchString" @@clear-role="handleClearRole" @@filter-by-role="handleFilterByRole" />
     <EmployeesSearchInfo :employeesLength="filteredEmployees.length" />
     <EmployeeList :employees="filteredEmployees" />
   </div>
@@ -12,21 +12,19 @@ import { ref } from "vue";
 import type { EmployeeObject } from "../types/employee";
 import EmployeesSearchInfo from "../components/Employees/EmployeesSearchInfo.vue";
 import EmployeeList from "../components/Employees/EmployeeList.vue";
-import EmployeeFilters from "../components/Employees/EmployeeFilters.vue";
+import EmployeeFilters from "@/components/Employees/EmployeeFilters.vue";
 
 const { employees } = useEmployeesStore();
 
+//data
 const searchString = ref<string>("");
 const roleSelected = ref<string>("");
 
-function setRole(roleName: string) {
-  roleSelected.value = roleName;
-}
+//events
+const handleFilterByRole = (roleName: string) => (roleSelected.value = roleName);
+const handleClearRole = () => (roleSelected.value = "");
 
-function clearRole() {
-  roleSelected.value = "";
-}
-
+//methods
 function searchByText(array: EmployeeObject[], filter1: string, filter2: string, text: string): EmployeeObject[] {
   const res = array.filter((obj) => {
     const prop1 = obj[filter1]?.toString().toLowerCase() || "";

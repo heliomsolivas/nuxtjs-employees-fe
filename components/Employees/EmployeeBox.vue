@@ -14,15 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType } from "vue";
 import type { Employee } from "~/types/employee";
-
-const props = defineProps({
-  employee: {
-    required: true,
-    type: Object as PropType<Employee>,
-  },
-});
+defineProps<{
+  employee: Employee;
+}>();
 </script>
 <style scoped>
 .employee__data {

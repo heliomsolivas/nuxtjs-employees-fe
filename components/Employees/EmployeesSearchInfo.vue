@@ -11,10 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
-  employeesLength: {
-    required: true,
-    type: Number,
-  },
-});
+defineProps<{
+  employeesLength: number;
+}>();
 </script>
