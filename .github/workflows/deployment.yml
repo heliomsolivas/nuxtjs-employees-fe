@@ -12,4 +12,19 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+      - name: Install NodeJS & Dependencies & Build Project
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - run: echo "Deploying..."
+
+      
           
